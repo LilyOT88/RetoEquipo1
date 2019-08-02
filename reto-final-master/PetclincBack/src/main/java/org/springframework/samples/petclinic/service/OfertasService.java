@@ -1,6 +1,7 @@
 package org.springframework.samples.petclinic.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -8,25 +9,46 @@ import org.springframework.samples.petclinic.model.Oferta;
 import org.springframework.samples.petclinic.repository.OfertasRepository;
 import org.springframework.stereotype.Service;
 @Service
-public class OfertasService {
+public class OfertasService implements OfertasInterface{
 	@Autowired
 	private OfertasRepository repo;
-//		List<Oferta> oferta =new ArrayList<Oferta>;
-		
-		public List<Oferta> getOfertas() throws DataAccessException{
-			return repo.findAll();
-		}
-		
-		public void  insertarOferta(Oferta ofer) throws DataAccessException {
-			repo.save(ofer);
-		}
 
-	public void borrarOferta(Integer id) throws DataAccessException {
+
+	@Override
+	public List<Oferta> getOfertas() throws DataAccessException {
+		return repo.findAll();
+		
+	}
+
+	@Override
+	public void insertarOferta(Oferta ofer) throws DataAccessException {
+		repo.save(ofer);
+		
+	}
+
+	@Override
+	public boolean borrarOferta(Integer id)  throws DataAccessException{
+		if (repo.findOne(id)!=null) {
 		repo.delete(id);
+		return true;
+	}
+		return false;
+		
+		
+	}
+
+	@Override
+	public void updateOferta(Oferta ofer) throws DataAccessException {
+		repo.save(ofer);
+		
+	}
+
+	@Override
+	public Oferta obtenerOferta(Integer id) throws DataAccessException {
+		return repo.findOne(id);
 	}
 	
-	public void updateofertas(Oferta ofer ) throws DataAccessException {
-		repo.save(ofer);
-	}
 
+	
+	
 }
