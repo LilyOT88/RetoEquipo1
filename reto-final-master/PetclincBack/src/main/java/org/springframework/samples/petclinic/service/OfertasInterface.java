@@ -1,5 +1,13 @@
 package org.springframework.samples.petclinic.service;
 
-public class OfertasInterface {
+import java.util.List;
+
+import org.springframework.samples.petclinic.model.Oferta;
+
+public interface OfertasInterface {
+public List<Oferta> getOfertas();
+public void insertarOferta(Oferta ofer);
+public void borrarOferta(int id);
+public void updateOferta(int id);
 
 }
