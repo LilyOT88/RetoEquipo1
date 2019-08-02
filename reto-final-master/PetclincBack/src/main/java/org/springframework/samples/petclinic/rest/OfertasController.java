@@ -1,6 +1,7 @@
 package org.springframework.samples.petclinic.rest;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,16 +24,17 @@ public class OfertasController {
 	private OfertasService ofertasService;
 	
 	@RequestMapping(value="", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<List<Oferta>> getAllOfertas(){
-		
+	public ResponseEntity<Collection<Oferta>> getAllOfertas(){
+		System.out.println("Estoy enviando ofertas");
 		List<Oferta> ofertas=this.ofertasService.getOfertas();
+		System.out.println(ofertas);
 		if(ofertas.isEmpty()) {
 			
 			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
 			
 		}else {
 			
-			return ResponseEntity.status(HttpStatus.OK).body(ofertas);
+			return new ResponseEntity<Collection<Oferta>>(ofertas, HttpStatus.OK);
 			
 		}
 		

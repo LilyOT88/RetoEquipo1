@@ -1,19 +1,26 @@
 package org.springframework.samples.petclinic.model;
 
-import java.sql.Date;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.samples.petclinic.rest.JacksonCustomOwnerDeserializer;
+import org.springframework.samples.petclinic.rest.JacksonCustomOwnerSerializer;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Table(name = "ofertas")
-public class Oferta {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+@JsonSerialize(using = JacksonCustomOwnerSerializer.class)
+@JsonDeserialize(using = JacksonCustomOwnerDeserializer.class)
+public class Oferta extends BaseEntity{
+
 	
 	@Column(name = "title")
 	private String title;
@@ -25,6 +32,8 @@ public class Oferta {
 	private double discount;
 	
 	@Column(name = "expireDate")
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="mm/dd/yyyy")
 	private Date expireDate;
 	
 	public Oferta() {
@@ -39,37 +48,45 @@ public class Oferta {
 		this.expireDate = expireDate;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getTitle() {
 		return title;
 	}
-	
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
+
 	public String getDescription() {
 		return description;
 	}
-	
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	public String getDiscount() {
-		return description;
+
+	public double getDiscount() {
+		return discount;
 	}
-	
+
 	public void setDiscount(double discount) {
 		this.discount = discount;
 	}
+
+	public Date getExpireDate() {
+		return expireDate;
+	}
+
+	public void setExpireDate(Date expireDate) {
+		this.expireDate = expireDate;
+	}
+
+	@Override
+	public String toString() {
+		return "Oferta [title=" + title + ", description=" + description + ", discount=" + discount + ", expireDate="
+				+ expireDate + "]";
+	}
+
 
 	
 
