@@ -7,7 +7,8 @@ import org.springframework.samples.petclinic.model.Oferta;
 public interface OfertasInterface {
 public List<Oferta> getOfertas();
 public void insertarOferta(Oferta ofer);
-public void borrarOferta(int id);
-public void updateOferta(int id);
+public boolean borrarOferta(Integer id);
+public void updateOferta(Oferta ofer);
+public Oferta obtenerOferta(Integer id);
 
 }
