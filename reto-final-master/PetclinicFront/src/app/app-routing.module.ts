@@ -23,12 +23,24 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {PageNotFoundComponent} from './parts/page-not-found/page-not-found.component';
+
 import {WelcomeComponent} from './parts/welcome/welcome.component';
+import { OfertListComponent } from './oferts/ofert-list/ofert-list.component';
+import { OfertAddComponent } from './oferts/ofert-add/ofert-add.component';
+import { OfertDetailComponent } from './oferts/ofert-detail/ofert-detail.component';
+import { OfertEditComponent } from './oferts/ofert-edit/ofert-edit.component';
+
 
 const appRoutes: Routes = [
   {path: 'welcome', component: WelcomeComponent},
+
+  {path: 'oferts', component: OfertListComponent},
+  {path: 'oferts/add', component: OfertAddComponent},
+  {path: 'oferts/:id', component: OfertDetailComponent},
+  {path: 'oferts/:id/edit', component: OfertEditComponent},
   {path: '', component: WelcomeComponent},
-  {path: '**', component: PageNotFoundComponent}
+  {path: '**', component: PageNotFoundComponent},
+
 ];
 
 @NgModule({

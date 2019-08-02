@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="container xd-container">
+    <h2>Oferts</h2>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Discount</th>
+          <th>ExpireDate</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr *ngFor="let ofert of oferts">
+          <td class="ofertFullTitle"><a routerLink="/oferts/{{ofert.id}}" routerLinkActive="active"
+                                       (click)="onSelect(ofert)">{{ofert.title}}</a></td>
+          <td>{{ofert.description}}</td>
+          <td>{{ofert.discount}}</td>
+          <td>{{ofert.expireDate}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <div>
+        <button class="btn btn-default" (click)="addOfert()">Add Ofert</button>
+      </div>
+    </div>
+  </div>
+</div>
+

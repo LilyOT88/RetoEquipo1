@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div class="container xd-container">
+
+    <h2>Ofert Information</h2>
+
+
+    <table class="table table-striped">
+      <tr>
+        <th>Title</th>
+        <td><b>{{ofert.title}}</b></td>
+      </tr>
+      <tr>
+        <th>Description</th>
+        <td>{{ofert.description}}</td>
+      </tr>
+      <tr>
+        <th>Discount</th>
+        <td>{{ofert.discount}}</td>
+      </tr>
+      <tr>
+        <th>ExpireDate</th>
+        <td>{{ofert.expireDate}}</td>
+      </tr>
+    </table>
+
+    <button class="btn btn-default" (click)="gotoOfertsList()">Back</button>
+    <button class="btn btn-default" (click)="editOferts()">Edit Ofert</button>
+  </div>
+</div>
+
