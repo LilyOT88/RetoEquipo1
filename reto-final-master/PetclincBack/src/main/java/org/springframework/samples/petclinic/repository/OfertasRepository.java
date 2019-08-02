@@ -1,5 +1,8 @@
 package org.springframework.samples.petclinic.repository;
 
-public class OfertasRepository {
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface OfertasRepository extends JpaRepository<Oferta, Integer> {
 
 }
