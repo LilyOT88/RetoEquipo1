@@ -12,7 +12,6 @@ import org.springframework.samples.petclinic.model.Oferta;
 @Repository
 public interface OfertasRepository extends JpaRepository<Oferta, Integer> {
 	
-	@Query("select o from ofertas o where to_char(:expireDate,'DD/MM/YYYY')>to_char(SYSDATE,'DD/MM/YYYY')")
-    List<Oferta> findByExpireDate(@Param("expireDate")String expireDate);
-
+//	@Query("select o from Oferta o where to_char(:expireDate,'MM/DD/YYYY')>to_char(SYSDATE,'MM/DD/YYYY')")
+//    List<Oferta> findByExpireDate(@Param("expireDate")String expireDate);
 }
